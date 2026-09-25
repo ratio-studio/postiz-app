@@ -1,6 +1,9 @@
 name: Build Ratio Image
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -8,7 +11,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/postiz-app
+  IMAGE: ${{ github.repository_owner == 'ratio-studio' && 'ghcr.io/ratio-studio/postiz-app' || format('ghcr.io/{0}/postiz-app', github.repository_owner) }}
   TAG: ratio
 
 jobs:
