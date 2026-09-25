@@ -60,3 +60,11 @@ jobs:
             --amend "${IMAGE}:${TAG}-amd64" \
             --amend "${IMAGE}:${TAG}-arm64"
           docker manifest push "${IMAGE}:${TAG}"
+      - name: Make GHCR package public
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            "/orgs/${GITHUB_REPOSITORY_OWNER}/packages/container/postiz-app/visibility" \
+            -f visibility=public
