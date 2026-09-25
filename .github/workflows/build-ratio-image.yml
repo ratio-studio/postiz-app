@@ -12,7 +12,7 @@ permissions:
 
 env:
   IMAGE: ghcr.io/ratio-studio/postiz-app
-  TAG: ratio
+  TAG: ratio-${{ github.sha }}
 
 jobs:
   build:
