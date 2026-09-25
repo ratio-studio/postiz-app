@@ -19,7 +19,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
-        <link rel="icon" href="/ratio-mark.svg" sizes="any" />
+        <link rel="icon" href="/ratio-squared.jpg" type="image/jpeg" />
       </head>
       <body
         className={clsx(jakartaSans.className, 'dark text-primary !bg-primary')}
