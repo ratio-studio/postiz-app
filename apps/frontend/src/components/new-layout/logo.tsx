@@ -7,21 +7,17 @@ export const Logo = () => {
         xmlns="http://www.w3.org/2000/svg"
         width="48"
         height="48"
-        viewBox="0 0 48 48"
+        viewBox="0 0 500 500"
         fill="none"
         aria-label="Ratio"
       >
         <path
-          d="M8 12h32M12 12v24M24 12v24M36 12v24"
-          stroke="#F4B942"
-          strokeWidth="4"
-          strokeLinecap="round"
+          fill="#F2AA1F"
+          d="M90 218c0-44 34-79 76-79h244v42H218v178h-42V218H90Z"
         />
         <path
-          d="M8 36h32"
-          stroke="#F4B942"
-          strokeWidth="4"
-          strokeLinecap="round"
+          fill="#F2AA1F"
+          d="M315 181h95v178c-53 0-95-43-95-95v-83Z"
         />
       </svg>
     </div>

@@ -22,13 +22,13 @@ export const BillingAfter = () => {
       <div className="text-center mb-[20px] text-xl [@media(max-width:1024px)]:text-xl">
         <h1 className="text-3xl [@media(max-width:1024px)]:text-xl">
           {t(
-            'join_10000_entrepreneurs_who_use_postiz',
-            'Join 10,000+ Entrepreneurs Who Use Postiz'
+            'ratio_readable_businesses',
+            'Make your business readable with Ratio'
           )}
           <br />
           {t(
-            'to_manage_all_your_social_media_channels',
-            'To Manage All Your Social Media Channels'
+            'ratio_operations_system',
+            'A clearer operating system for your social presence'
           )}
         </h1>
         <br />

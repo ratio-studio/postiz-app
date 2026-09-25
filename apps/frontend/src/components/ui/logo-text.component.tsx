@@ -3,28 +3,32 @@ import React from 'react';
 export const LogoTextComponent = () => {
   return (
     <svg
-      width="190"
-      height="42"
-      viewBox="0 0 190 42"
+      width="240"
+      height="52"
+      viewBox="0 0 420 84"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Ratio"
     >
-      <path
-        d="M8 11h28M12 11v20M22 11v20M32 11v20M8 31h28"
-        stroke="#F4B942"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
+      <g transform="translate(0 1) scale(.164)">
+        <path
+          fill="#F2AA1F"
+          d="M90 218c0-44 34-79 76-79h244v42H218v178h-42V218H90Z"
+        />
+        <path
+          fill="#F2AA1F"
+          d="M315 181h95v178c-53 0-95-43-95-95v-83Z"
+        />
+      </g>
       <text
-        x="52"
-        y="29"
+        x="82"
+        y="58"
         fill="currentColor"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="24"
+        fontSize="38"
         fontWeight="700"
-        letterSpacing="5"
+        letterSpacing="9"
       >
         RATIO
       </text>
