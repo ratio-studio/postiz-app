@@ -3,12 +3,12 @@ import Image from 'next/image';
 export const LogoTextComponent = () => {
   return (
     <Image
-      src="/ratio-email-header.png"
+      src="/ratio-icon-white-gold.svg"
       alt="Ratio"
-      width={1200}
-      height={144}
+      width={60}
+      height={60}
       priority
-      className="h-auto w-[220px] object-contain object-left"
+      className="h-[60px] w-[60px] rounded-[10px] bg-black object-contain"
     />
   );
 };
