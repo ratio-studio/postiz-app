@@ -11,7 +11,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE: ${{ github.repository_owner == 'ratio-studio' && 'ghcr.io/ratio-studio/postiz-app' || format('ghcr.io/{0}/postiz-app', github.repository_owner) }}
+  IMAGE: ghcr.io/ratio-studio/postiz-app
   TAG: ratio
 
 jobs:
