@@ -1,5 +1,11 @@
 @use './colors.scss';
 @use './polonto.css';
+@use '@fontsource/plus-jakarta-sans/latin-500.css';
+@use '@fontsource/plus-jakarta-sans/latin-600.css';
+@use '@fontsource/plus-jakarta-sans/latin-700.css';
+@use '@fontsource/plus-jakarta-sans/latin-500-italic.css';
+@use '@fontsource/plus-jakarta-sans/latin-600-italic.css';
+@use '@fontsource/plus-jakarta-sans/latin-700-italic.css';
 @use '@uppy/core/dist/style.css' as uppyCore;
 @use '@uppy/dashboard/dist/style.css' as uppyDashboard;
 
@@ -14,6 +20,10 @@
 body {
   background: var(--new-bgColor) !important;
   color: var(--new-btn-text);
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body * {
