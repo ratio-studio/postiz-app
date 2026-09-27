@@ -7,7 +7,6 @@ name: Resolve staging conflicts
 # claude-code-action rejects `push` events, so detection runs on a schedule.
 #
 # Required secrets:
-#   STAGING_MERGE_KEY         private half of a write-enabled deploy key
 #   CLAUDE_CODE_OAUTH_TOKEN   Claude API key, despite the secret name
 
 on:
@@ -24,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout staging
@@ -32,26 +31,13 @@ jobs:
         with:
           ref: staging
           fetch-depth: 0
-          ssh-key: ${{ secrets.STAGING_MERGE_KEY }}
           persist-credentials: true
 
-      # Runs before anything billable. If the deploy key cannot push, the job
-      # dies here at zero cost instead of after a paid resolution.
-      - name: Configure push credentials
-        env:
-          SSH_KEY: ${{ secrets.STAGING_MERGE_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/staging_merge
-          chmod 600 ~/.ssh/staging_merge
-          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
-          echo "GIT_SSH_COMMAND=ssh -i $HOME/.ssh/staging_merge -o IdentitiesOnly=yes" >> "$GITHUB_ENV"
-
-      # `git push --dry-run` exercises the exact path the real push takes.
-      # A bare `ssh -T` does not, since GIT_SSH_COMMAND applies only to git.
+      # Runs before anything billable. Checkout persisted the GITHUB_TOKEN
+      # credential, so this exercises the exact path the real push takes.
       - name: Preflight push
         run: |
-          git remote set-url origin "git@github.com:${{ github.repository }}.git"
+          git remote set-url origin "https://github.com/${{ github.repository }}.git"
           git push --dry-run origin HEAD:staging
           echo "push path verified"
 
@@ -240,10 +226,10 @@ jobs:
           path: /tmp/resolved.bundle
           retention-days: 14
 
-      # The action rewrites `origin` to an HTTPS URL during its own git setup,
-      # so the SSH remote is reasserted here.
+      # The action may rewrite `origin` during its own git setup, so the
+      # checkout's token-authenticated HTTPS remote is reasserted here.
       - name: Push staging
         if: steps.probe.outputs.conflicted == 'true'
         run: |
-          git remote set-url origin "git@github.com:${{ github.repository }}.git"
+          git remote set-url origin "https://github.com/${{ github.repository }}.git"
           git push origin HEAD:staging
